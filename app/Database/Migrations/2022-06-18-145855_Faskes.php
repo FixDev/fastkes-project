@@ -71,8 +71,8 @@ class Faskes extends Migration
         ]);
 
         $this->forge->addKey('id', TRUE);
-        $this->forge->addKey('jenis_faskes_id');
-        $this->forge->addKey('kecamatan_id');
+
+        $this->forge->addForeignKey('jenis_faskes_id', 'kecamatan_id');
 
 
         $this->forge->createTable('faskes', TRUE);
