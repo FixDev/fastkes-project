@@ -13,6 +13,7 @@ class Landingpage extends BaseController
     public function faskes()
     {
         echo view('landing_page/layouts/header');
+        echo view('landing_page/faskes');
         echo view('landing_page/layouts/footer');
     }
 }
