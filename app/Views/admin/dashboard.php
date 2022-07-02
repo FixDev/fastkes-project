@@ -1,3 +1,5 @@
+<?= $this->extend('layouts/layout_admin'); ?>
+<?= $this->section('layout') ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -47,3 +49,4 @@
     </section>
     <!-- /.content -->
 </div>
+<?= $this->endSection(); ?>

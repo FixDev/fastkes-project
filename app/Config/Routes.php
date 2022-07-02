@@ -41,7 +41,13 @@ $routes->get('/', 'Landingpage::home');
 $routes->get('/faskes', 'Landingpage::faskes');
 
 // Dashboard
-$routes->get('/dashboard', 'Dashboard::index');
+$routes->group('dashboard', static function ($routes) {
+    $routes->get('/', 'Dashboard::index');
+    $routes->group('faskes', static function ($routes) {
+        $routes->get('/', 'Faskes::index');
+        $routes->get('add', 'Faskes::add', ['as' => 'faskes-add']);
+    });
+});
 
 /*
  * --------------------------------------------------------------------
