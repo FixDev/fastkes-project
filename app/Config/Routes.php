@@ -38,7 +38,7 @@ $routes->set404Override();
 
 // Landing Page
 $routes->get('/', 'Landingpage::home');
-$routes->get('/faskes', 'Landingpage::faskes');
+$routes->get('/daftar-faskes', 'Landingpage::faskes');
 
 // Dashboard
 $routes->group('dashboard', static function ($routes) {
