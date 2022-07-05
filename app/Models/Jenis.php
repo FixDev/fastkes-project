@@ -39,4 +39,9 @@ class Jenis extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function countAllJenis()
+    {
+        return $this->countAll();
+    }
 }
