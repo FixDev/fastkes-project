@@ -10,7 +10,7 @@ class Users extends Migration
     {
         $this->forge->addField([
             'id'          => [
-                'type'           => 'INT',
+                'type'           => 'BIGINT',
                 'constraint'     => 5,
                 'unsigned'       => true,
                 'auto_increment' => true
@@ -18,7 +18,7 @@ class Users extends Migration
             'username'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '20',
-                'unique' => TRUE
+                'unique'         => TRUE
             ],
             'password'       => [
                 'type'           => 'VARCHAR',
@@ -27,22 +27,22 @@ class Users extends Migration
             'email'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '40',
-                'unique' => TRUE
+                'unique'         => TRUE
             ],
             'created_at'       => [
                 'type'           => 'TIMESTAMP',
-                'null' => TRUE
+                'null'           => TRUE
             ],
             'last_login'       => [
                 'type'           => 'TIMESTAMP',
-                'null' => TRUE
+                'null'           => TRUE
             ],
             'status'       => [
                 'type'           => 'SMALLINT',
-                'constraint'     => '40',
+                'constraint'     => '1',
             ],
             'role'       => [
-                'type'           => 'ROLE',
+                'type'           => 'VARCHAR',
                 'constraint'     => '20',
             ],
         ]);
@@ -50,11 +50,11 @@ class Users extends Migration
         $this->forge->addKey('id', TRUE);
 
 
-        $this->forge->createTable('users', TRUE);
+        $this->forge->createTable('user', TRUE);
     }
 
     public function down()
     {
-        $this->forge->dropTable('users');
+        $this->forge->dropTable('user');
     }
 }
