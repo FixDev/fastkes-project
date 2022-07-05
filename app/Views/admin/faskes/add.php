@@ -21,84 +21,112 @@
 
     <!-- Main content -->
     <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Data Faskes</h3>
+                            <div class="card-tools">
+                                <!-- <a class="btn btn-sm btn-success" href=""><i class="fa fa-plus"></i> Tambah Data</a> -->
+                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button> -->
+                            </div>
+                        </div>
+                        <form>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-group">
+                                            <label for="nama">Nama Jenis Faskes</label>
+                                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-group">
+                                            <label>Jenis</label>
+                                            <select name="jenis_id" class="form-control">
+                                                <?php
+                                                foreach ($jenis_faskes as $jf) {
+                                                ?>
+                                                    <option value="<?= $jf['id'] ?>"><?= $jf['nama'] ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-group">
+                                            <label>Alamat</label>
+                                            <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-group">
+                                            <label>Jenis</label>
+                                            <select name="jenis_id" class="form-control">
+                                                <?php
+                                                foreach ($kecamatan as $k) {
+                                                ?>
+                                                    <option value="<?= $k['id'] ?>"><?= $k['nama'] ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-group">
+                                            <label>Koordinat</label>
+                                            <input type="text" class="form-control" name="latlong" id="latlong" placeholder="Koordinat">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-group">
+                                            <label>Deskripsi</label>
+                                            <input type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-group">
+                                            <label>Skor Rating</label>
+                                            <input type="number" step="0.01" class="form-control" name="skor_rating" id="skor_rating" placeholder="Skor Rating">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-group">
+                                            <label>Website</label>
+                                            <input type="text" class="form-control" name="website" id="website" placeholder="Website">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-group">
+                                            <label>Jumlah Dokter</label>
+                                            <input type="number" class="form-control" name="jumlah_dokter" id="jumlah_dokter" placeholder="Jumlah Dokter">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-group">
+                                            <label>Jumlah Pegawai</label>
+                                            <input type="number" class="form-control" name="jumlah_pegawai" id="jumlah_pegawai" placeholder="Jumlah Pegawai">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-        <!-- Default box -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Data Faskes</h3>
-
-                <div class="card-tools">
-                    <!-- <a class="btn btn-sm btn-success" href=""><i class="fa fa-plus"></i> Tambah Data</a> -->
-                    <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                        <i class="fas fa-times"></i>
-                    </button> -->
+                            <div class="card-footer text-right">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6 mb-2">
-                        <label>Nama</label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama">
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <label>Jenis</label>
-                        <select name="jenis_id" class="form-control">
-                            <?php
-                            foreach ($jenis_faskes as $jf) {
-                            ?>
-                                <option value="<?= $jf['id'] ?>"><?= $jf['nama'] ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <label>Alamat</label>
-                        <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat">
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <label>Jenis</label>
-                        <select name="jenis_id" class="form-control">
-                            <?php
-                            foreach ($kecamatan as $k) {
-                            ?>
-                                <option value="<?= $k['id'] ?>"><?= $k['nama'] ?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <label>Koordinat</label>
-                        <input type="text" class="form-control" name="latlong" id="latlong" placeholder="Koordinat">
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <label>Deskripsi</label>
-                        <input type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi">
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <label>Skor Rating</label>
-                        <input type="number" step="0.01" class="form-control" name="skor_rating" id="skor_rating" placeholder="Skor Rating">
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <label>Website</label>
-                        <input type="text" class="form-control" name="website" id="website" placeholder="Website">
-                    </div>
-                    <div class="col-md-6 md-2">
-                        <label>Jumlah Dokter</label>
-                        <input type="number" class="form-control" name="jumlah_dokter" id="jumlah_dokter" placeholder="Jumlah Dokter">
-                    </div>
-                    <div class="col-md-6 md-2">
-                        <label>Jumlah Pegawai</label>
-                        <input type="number" class="form-control" name="jumlah_pegawai" id="jumlah_pegawai" placeholder="Jumlah Pegawai">
-                    </div>
-                    <!-- /.card-footer-->
-                </div>
-                <!-- /.card -->
-
+        </div>
     </section>
     <!-- /.content -->
 </div>

@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Faskes extends Model
+class Rating extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'faskes';
+    protected $table            = 'rating';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama', 'alamat', 'latlong', 'jenis_faskes_id', 'deskripsi', 'skor_rating', 'foto1', 'foto2', 'foto3', 'kecamatan_id', 'website', 'jumlah_dokter', 'jumlah_pegawai'];
+    protected $allowedFields    = ['nama']; //ini yg ditanya sayib di grup harusnya angka bukan nama (design pak rojul)
 
     // Dates
     protected $useTimestamps = false;
@@ -40,14 +40,8 @@ class Faskes extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-
-    public function getAllFaskes()
+    public function avgAllRating()
     {
-        return $this->select('jenis_faskes.nama as nama_faskes, kecamatan.nama as nama_kecamatan, faskes.*')->join('jenis_faskes', 'faskes.jenis_faskes_id=jenis_faskes.id')->join('kecamatan', 'faskes.kecamatan_id=kecamatan.id')->findAll();
-    }
-
-    public function countAllFaskes()
-    {
-        return $this->countAll();
+        return $this->selectAvg('nama')->findAll();
     }
 }

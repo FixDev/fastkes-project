@@ -47,6 +47,10 @@ $routes->group('dashboard', static function ($routes) {
         $routes->get('/', 'Faskes::index');
         $routes->get('add', 'Faskes::add', ['as' => 'faskes-add']);
     });
+    $routes->group('jenis', static function ($routes) {
+        $routes->get('/', 'Jenis::index', ['as' => 'jenis-index']);
+        $routes->get('add', 'Jenis::add', ['as' => 'jenis-add']);
+    });
 });
 
 /*

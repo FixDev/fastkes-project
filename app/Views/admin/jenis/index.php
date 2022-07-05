@@ -6,11 +6,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Fasilitas Kesehatan</h1>
+                    <h1>Jenis Fasilitas Kesehatan</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Faskes</li>
+                        <li class="breadcrumb-item active">Jenis Faskes</li>
                     </ol>
                 </div>
             </div>
@@ -22,9 +22,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Data Faskes</h3>
+                        <h3 class="card-title">Data Jenis Faskes</h3>
                         <div class="card-tools">
-                            <a class="btn btn-sm btn-success" href="<?= route_to('faskes-add') ?>"><i class="fa fa-plus"></i> Tambah Data</a>
+                            <a class="btn btn-sm btn-success" href="<?= route_to('jenis-add') ?>"><i class="fa fa-plus"></i> Tambah Data</a>
                         </div>
                     </div>
 
@@ -32,35 +32,17 @@
                         <table class="table table-hover text-nowrap text-center">
                             <thead>
                                 <th>No</th>
-                                <th>Nama Faskes</th>
-                                <th>Jenis</th>
-                                <th>Alamat</th>
-                                <th>Koordinat</th>
-                                <th>Kecamatan</th>
-                                <th>Foto</th>
-                                <th>Website</th>
-                                <th>Rating</th>
-                                <th>Jumlah Dokter</th>
-                                <th>Jumlah Pegawai</th>
+                                <th>Nama Jenis Faskes</th>
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
                                 <?php
                                 $no = 1;
-                                foreach ($faskes as $f) :
+                                foreach ($jenis as $j) :
                                 ?>
                                     <tr>
                                         <td><?= $no++; ?></td>
-                                        <td><?= $f['nama']  ?></td>
-                                        <td><?= $f['nama_faskes']  ?></td>
-                                        <td><?= $f['alamat'] ?></td>
-                                        <td><?= $f['latlong']  ?></td>
-                                        <td><?= $f['nama_kecamatan'] ?></td>
-                                        <td><img src="/faskes/<?= $f['foto1']  ?>" alt="<?= $f['foto1']  ?>"></td>
-                                        <td><?= $f['website']  ?></td>
-                                        <td><?= $f['skor_rating'] ?></td>
-                                        <td><?= $f['jumlah_dokter'] ?></td>
-                                        <td><?= $f['jumlah_pegawai'] ?></td>
+                                        <td><?= $j['nama']  ?></td>
                                         <td><a class="btn btn-sm btn-info" href="#"><i class="fa fa-edit"></i></a> <a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
                                     </tr>
                                 <?php endforeach; ?>
