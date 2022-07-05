@@ -22,23 +22,26 @@ class Komentar extends Migration
                 'type'           => 'TEXT',
             ],
             'users_id'      => [
-                'type'           => 'INT',
+                'type'           => 'BIGINT',
+                'constraint'     => '5',
+                'unsigned'       => TRUE
             ],
             'rating_id'      => [
-                'type'           => 'INT',
+                'type'           => 'BIGINT',
+                'constraint'     => '5',
+                'unsigned'       => TRUE
             ],
             'faskes_id'      => [
-                'type'           => 'INT',
+                'type'           => 'BIGINT',
+                'constraint'     => '5',
+                'unsigned'       => TRUE
             ],
         ]);
 
         $this->forge->addKey('id', TRUE);
-        $this->forge->addForeignKey(
-            'users_id',
-            'rating_id',
-            'faskes_id'
-        );
-
+        $this->forge->addForeignKey('users_id', 'user', 'id');
+        $this->forge->addForeignKey('rating_id', 'rating', 'id');
+        $this->forge->addForeignKey('faskes_id', 'faskes', 'id');
 
         $this->forge->createTable('komentar', TRUE);
     }

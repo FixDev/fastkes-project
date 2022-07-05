@@ -10,7 +10,7 @@ class Faskes extends Migration
     {
         $this->forge->addField([
             'id'          => [
-                'type'           => 'INT',
+                'type'           => 'BIGINT',
                 'constraint'     => 5,
                 'unsigned'       => true,
                 'auto_increment' => true
@@ -30,10 +30,11 @@ class Faskes extends Migration
             ],
             'deskripsi'       => [
                 'type'           => 'TEXT',
+                'constraint'     => '255',
             ],
             'skor_rating'       => [
                 'type'           => 'DOUBLE',
-                'null' => TRUE
+                'null'           => TRUE
             ],
             'foto1'       => [
                 'type'           => 'VARCHAR',
@@ -42,17 +43,17 @@ class Faskes extends Migration
             'foto2'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '40',
-                'null' => TRUE
+                'null'           => TRUE
             ],
             'foto3'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '40',
-                'null' => TRUE
+                'null'           => TRUE
             ],
             'website'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '45',
-                'null' => TRUE
+                'null'           => TRUE
             ],
             'jumlah_dokter'       => [
                 'type'           => 'INT',
@@ -63,17 +64,20 @@ class Faskes extends Migration
                 'constraint'     => '255'
             ],
             'jenis_faskes_id'       => [
-                'type'           => 'INT',
+                'type'           => 'BIGINT',
+                'constraint'     => '5',
+                'unsigned'       => TRUE
             ],
             'kecamatan_id'       => [
-                'type'           => 'INT',
+                'type'           => 'BIGINT',
+                'constraint'     => '5',
+                'unsigned'       => TRUE
             ],
         ]);
 
         $this->forge->addKey('id', TRUE);
-
-        $this->forge->addForeignKey('jenis_faskes_id', 'kecamatan_id');
-
+        $this->forge->addForeignKey('jenis_faskes_id', 'jenis_faskes', 'id');
+        $this->forge->addForeignKey('kecamatan_id', 'kecamatan', 'id');
 
         $this->forge->createTable('faskes', TRUE);
     }
