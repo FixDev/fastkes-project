@@ -53,10 +53,9 @@ $routes->group('dashboard', static function ($routes) {
     });
     $routes->group('kecamatan', static function ($routes) {
         $routes->get('/', 'Kecamatan::index');
-        $routes->get('/(:segment)/preview', 'Kecamatan::preview/$1');
-        $routes->add('/new', 'Kecamatan::create');
-        $routes->add('/edit', 'Kecamatan::edit');
-        $routes->get('/delete', 'Kecamatan::delete');
+        $routes->add('new', 'Kecamatan::create');
+        $routes->add('(:segment)/edit', 'Kecamatan::edit/$1');
+        $routes->get('(:segment)/delete', 'Kecamatan::delete/$1');
     });
 });
 /*
