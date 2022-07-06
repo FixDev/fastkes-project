@@ -71,7 +71,12 @@ class Kecamatan extends BaseController
   public function delete($id)
   {
     $kec = new KecamatanModel();
-    $kec->delete($id);
+    try {
+      $kec->delete($id);
+      $this->session->setFlashdata('success', "Successfully deleted.");
+    } catch (\Throwable $th) {
+      $this->session->setFlashdata('error', "Failed to delete. Error Code : " . $th->getCode());
+    }
     return redirect('dashboard/kecamatan');
   }
 }

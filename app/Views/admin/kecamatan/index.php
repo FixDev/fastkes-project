@@ -14,6 +14,15 @@
           </ol>
         </div>
       </div>
+      <?php if (session()->getFlashdata('success')) { ?>
+        <div class="alert alert-success">
+          <?= session()->getFlashdata('success'); ?>
+        </div>
+      <?php } else if (session()->getFlashdata('error')) { ?>
+        <div class="alert alert-danger">
+          <?= session()->getFlashdata('error'); ?>
+        </div>
+      <?php } ?>
     </div>
   </section>
 
@@ -53,12 +62,17 @@
               </tbody>
             </table>
 
-            <!-- modal -->
-            <div id="confirm-dialog" class="modal" tabindex="-1" role="dialog">
-              <div class="modal-dialog" role="document">
+            <!-- Modal -->
+            <div class="modal fade" id="confirm-dialog" tabindex="-1" role="dialog" aria-labelledby="confirm-dialog" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
+                  <div class="modal-header">
+                    <h2 class="modal-title" id="confirm-dialog">Are you sure?</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
                   <div class="modal-body">
-                    <h2 class="h2">Are you sure?</h2>
                     <p>The data will be deleted and lost forever</p>
                   </div>
                   <div class="modal-footer">
