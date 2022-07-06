@@ -51,8 +51,14 @@ $routes->group('dashboard', static function ($routes) {
         $routes->get('/', 'Jenis::index', ['as' => 'jenis-index']);
         $routes->get('add', 'Jenis::add', ['as' => 'jenis-add']);
     });
+    $routes->group('kecamatan', static function ($routes) {
+        $routes->get('/', 'Kecamatan::index');
+        $routes->get('/(:segment)/preview', 'Kecamatan::preview/$1');
+        $routes->add('/new', 'Kecamatan::create');
+        $routes->add('/edit', 'Kecamatan::edit');
+        $routes->get('/delete', 'Kecamatan::delete');
+    });
 });
-
 /*
  * --------------------------------------------------------------------
  * Additional Routing
