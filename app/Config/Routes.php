@@ -57,6 +57,10 @@ $routes->group('dashboard', static function ($routes) {
         $routes->add('(:segment)/edit', 'Kecamatan::edit/$1');
         $routes->get('(:segment)/delete', 'Kecamatan::delete/$1');
     });
+    $routes->group('komentar', static function ($routes) {
+        $routes->get('/', 'Komentar::index');
+        // $routes->get('(:segment)/delete', 'Kecamatan::delete/$1');
+    });
 });
 /*
  * --------------------------------------------------------------------
