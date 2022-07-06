@@ -32,6 +32,9 @@ class Kecamatan extends Seeder
                 'nama' => 'Limo',
             ],
             [
+                'nama' => 'Pancoran Mas',
+            ],
+            [
                 'nama' => 'Sawangan',
             ],
             [
