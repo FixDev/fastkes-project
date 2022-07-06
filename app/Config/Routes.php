@@ -49,7 +49,9 @@ $routes->group('dashboard', static function ($routes) {
     });
     $routes->group('jenis', static function ($routes) {
         $routes->get('/', 'Jenis::index', ['as' => 'jenis-index']);
-        $routes->get('add', 'Jenis::add', ['as' => 'jenis-add']);
+        $routes->add('add', 'Jenis::add', ['as' => 'jenis-create']);
+        $routes->add('(:segment)/edit', 'Jenis::edit/$1', ['as' => 'jenis-edit']);
+        $routes->get('(:segment)/delete', 'Jenis::delete/$1', ['as' => 'jenis-delete']);
     });
     $routes->group('kecamatan', static function ($routes) {
         $routes->get('/', 'Kecamatan::index');
