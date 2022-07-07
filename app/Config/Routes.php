@@ -38,7 +38,10 @@ $routes->set404Override();
 
 // Landing Page
 $routes->get('/', 'Landingpage::home');
-$routes->get('/faskes', 'Landingpage::faskes');
+$routes->get('/daftar-faskes', 'Landingpage::faskes');
+$routes->get('/about', 'Landingpage::faskes');
+$routes->get('/login', 'Landingpage::login');
+$routes->get('/register', 'Landingpage::register');
 
 // Dashboard
 $routes->group('dashboard', static function ($routes) {
@@ -47,8 +50,23 @@ $routes->group('dashboard', static function ($routes) {
         $routes->get('/', 'Faskes::index');
         $routes->get('add', 'Faskes::add', ['as' => 'faskes-add']);
     });
+    $routes->group('jenis', static function ($routes) {
+        $routes->get('/', 'Jenis::index', ['as' => 'jenis-index']);
+        $routes->add('add', 'Jenis::add', ['as' => 'jenis-create']);
+        $routes->add('(:segment)/edit', 'Jenis::edit/$1', ['as' => 'jenis-edit']);
+        $routes->get('(:segment)/delete', 'Jenis::delete/$1', ['as' => 'jenis-delete']);
+    });
+    $routes->group('kecamatan', static function ($routes) {
+        $routes->get('/', 'Kecamatan::index');
+        $routes->add('new', 'Kecamatan::create');
+        $routes->add('(:segment)/edit', 'Kecamatan::edit/$1');
+        $routes->get('(:segment)/delete', 'Kecamatan::delete/$1');
+    });
+    $routes->group('komentar', static function ($routes) {
+        $routes->get('/', 'Komentar::index');
+        $routes->get('(:segment)/delete', 'Kecamatan::delete/$1');
+    });
 });
-
 /*
  * --------------------------------------------------------------------
  * Additional Routing

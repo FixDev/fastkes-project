@@ -26,8 +26,8 @@
                 </label>
                 <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a href="<?= base_url() ?>/">Home</a></li>
-                    <li><a href="<?= base_url() ?>/faskes">Faskes</a></li>
-                    <li><a>About</a></li>
+                    <li><a href="<?= base_url() ?>/daftar-faskes">Faskes</a></li>
+                    <li><a href="<?= base_url() ?>/about">About</a></li>
                 </ul>
             </div>
             <a class="btn btn-ghost normal-case text-xl">FastkesDE</a>
@@ -35,12 +35,12 @@
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal p-0">
                 <li><a href="<?= base_url() ?>/">Home</a></li>
-                <li><a href="<?= base_url() ?>/faskes">Faskes</a></li>
-                <li><a>About</a></li>
+                <li><a href="<?= base_url() ?>/daftar-faskes">Faskes</a></li>
+                <li><a  href="<?= base_url() ?>/about">About</a></li>
             </ul>
         </div>
         <div class="navbar-end">
-            <a class="btn btn-sm btn-outline">
+            <a  href="<?= base_url() ?>/login" class="btn btn-sm btn-outline">
                 Login
                 <span class="material-icons ml-1">
                     login
