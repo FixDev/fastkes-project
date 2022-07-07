@@ -16,4 +16,12 @@ class Landingpage extends BaseController
         echo view('landing_page/faskes');
         echo view('landing_page/layouts/footer');
     }
+    public function login()
+    {
+        echo view('landing_page/auth/login');
+    }
+    public function register()
+    {
+        echo view('landing_page/auth/register');
+    }
 }
