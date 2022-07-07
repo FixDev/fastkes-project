@@ -36,4 +36,59 @@ class Faskes extends BaseController
 
         return view('admin/faskes/add', compact(['title', 'jenis_faskes', 'kecamatan']));
     }
+
+    public function create()
+    {
+        $data = $this->request->getPost();
+        $foto = $this->request->getFiles();
+        foreach ($foto as $i => $f) {
+            if ($f->getError() == 0) {
+                $f->move('faskes/', $f->getName());
+                $data[$i] = $f->getName();
+            }
+        }
+        $this->faskes->insert($data);
+
+        return redirect()->to('/dashboard/faskes');
+    }
+
+    public function edit()
+    {
+        $title = 'Edit Faskes';
+        $id = $this->request->getGet('id');
+        $faskes = $this->faskes->first($id);
+        $jenis_faskes = $this->jenis->findAll();
+        $kecamatan = $this->kecamatan->findAll();
+        return view('admin/faskes/edit', compact(['title', 'faskes', 'jenis_faskes', 'kecamatan']));
+    }
+
+    public function update($id)
+    {
+        $id = $this->request->getGet('id');
+        $data = $this->request->getPost();
+        $foto = $this->request->getFiles();
+        $real_data = $this->faskes->where('id', $id)->first();
+        foreach ($foto as $i => $f) {
+            if ($f->getError() == 0) {
+                $f->move('faskes/', $f->getName());
+                $data[$i] = $f->getName();
+                unlink('faskes/' . $real_data[$i]);
+            }
+        }
+        $this->faskes->update($id, $data);
+
+        return redirect()->to('/dashboard/faskes');
+    }
+
+    public function delete($id)
+    {
+        $real_data = $this->faskes->where('id', $id)->first();
+        for ($i = 1; $i <= 3; $i++) {
+            if ($real_data["foto$i"] != null) {
+                unlink('faskes/' . $real_data["foto$i"]);
+            }
+        }
+        $this->faskes->delete($id);
+        return redirect()->to('/dashboard/faskes');
+    }
 }

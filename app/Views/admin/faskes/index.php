@@ -28,8 +28,8 @@
                         </div>
                     </div>
 
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-hover text-nowrap text-center">
+                    <div class="card-body p-0">
+                        <table class="table table-responsive table-hover text-nowrap text-center" id="table-data">
                             <thead>
                                 <th>No</th>
                                 <th>Nama Faskes</th>
@@ -61,7 +61,7 @@
                                         <td><?= $f['skor_rating'] ?></td>
                                         <td><?= $f['jumlah_dokter'] ?></td>
                                         <td><?= $f['jumlah_pegawai'] ?></td>
-                                        <td><a class="btn btn-sm btn-info" href="#"><i class="fa fa-edit"></i></a> <a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
+                                        <td><a class="btn btn-sm btn-info" href="<?= route_to('faskes-edit', $f['id']) ?>"><i class="fa fa-edit"></i></a> <a class="btn btn-sm btn-danger" href="<?= route_to('faskes-delete', $f['id']) ?>"><i class="fa fa-trash"></i></a></td>
                                     </tr>
                                 <?php endforeach; ?>
 
