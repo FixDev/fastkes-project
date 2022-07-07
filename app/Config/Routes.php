@@ -41,7 +41,7 @@ $routes->get('/', 'Landingpage::home');
 $routes->get('/daftar-faskes', 'Landingpage::faskes');
 $routes->get('/about', 'Landingpage::faskes');
 $routes->get('/login', 'Landingpage::login');
-$routes->get('/register', 'Landingpage::faskes');
+$routes->get('/register', 'Landingpage::register');
 
 // Dashboard
 $routes->group('dashboard', static function ($routes) {
