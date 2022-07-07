@@ -24,15 +24,25 @@ class Dashboard extends BaseController
 
     public function index()
     {
+        $db      = \Config\Database::connect();
+        $res     = $db->query("
+        SELECT SUM(src_kali.jumlah) / SUM(src_tambah.qty) as avg
+        FROM (SELECT r.nama, SUM(r.id) as jumlah
+        FROM komentar k
+        join rating r on k.rating_id = r.id
+        GROUP BY r.nama) src_kali, (SELECT  r.id as IDnya, r.nama, COUNT(r.id) as qty
+        FROM komentar k
+        JOIN rating r on r.id = k.rating_id
+        GROUP BY r.id) src_tambah
+        ")->getFirstRow();
+        
         $data = [
             'totalFaskes'   => $this->faskes->countAllFaskes(),
             'totalJenis'    => $this->jenis->countAllJenis(),
-            'avgRating'     => $this->rating->avgAllRating()[0]['nama'],
+            'avgRating'     => number_format((float)round($res->avg), 2, '.', ''),
             'totalKomentar' => $this->komentar->countAllKomentar(),
             'title'         => 'Dashboard',
         ];
-
-        // dd($data);
 
         return view('admin/dashboard', $data);
     }
