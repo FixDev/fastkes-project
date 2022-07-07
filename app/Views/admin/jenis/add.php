@@ -15,6 +15,11 @@
                     </ol>
                 </div>
             </div>
+            <?php if (session()->getFlashdata('error')) { ?>
+                <div class="alert alert-danger">
+                    <?= session()->getFlashdata('error'); ?>
+                </div>
+            <?php } ?>
         </div>
     </section>
 
@@ -26,11 +31,11 @@
                         <div class="card-header">
                             <h3 class="card-title">Data Jenis Faskes</h3>
                         </div>
-                        <form>
+                        <form action="" method="POST">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="nama">Nama Jenis Faskes</label>
-                                    <input type="text" class="form-control" id="nama" placeholder="Masukkan nama jenis fasilitas kesehatan">
+                                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama jenis fasilitas kesehatan">
                                 </div>
                             </div>
 
