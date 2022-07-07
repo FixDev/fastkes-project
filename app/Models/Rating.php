@@ -39,9 +39,4 @@ class Rating extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function avgAllRating()
-    {
-        return $this->selectAvg('nama')->findAll();
-    }
 }
