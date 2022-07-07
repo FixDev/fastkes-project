@@ -15,7 +15,7 @@ class Komentar extends Seeder
                 'isi' => 'layanan nya baik',
                 'users_id' => 2,
                 'rating_id' => 4,
-                'faskes_id' => 2
+                'faskes_id' => 1
             ]
         ];
 

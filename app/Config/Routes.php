@@ -61,7 +61,7 @@ $routes->group('dashboard', static function ($routes) {
     });
     $routes->group('komentar', static function ($routes) {
         $routes->get('/', 'Komentar::index');
-        // $routes->get('(:segment)/delete', 'Kecamatan::delete/$1');
+        $routes->get('(:segment)/delete', 'Kecamatan::delete/$1');
     });
 });
 /*
