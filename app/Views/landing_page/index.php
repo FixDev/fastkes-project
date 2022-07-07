@@ -12,7 +12,7 @@
                     Ayoo temukan faskes terdekat disekitar anda.
                 </p>
                 </p>
-                <a href="<?= base_url() ?>/daftar-faskes" class="animate-bounce btn btn-primary btn-md lg:btn-lg mt-5 lg:mt-20">Temukan disini!</a>
+                <a href="<?= base_url() ?>/daftar-faskes" class="animate-bounce btn btn-accent btn-md lg:btn-lg mt-5 lg:mt-20 text-white">Temukan disini!</a>
             </div>
         </div>
     </div>
