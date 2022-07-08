@@ -23,12 +23,30 @@
             <div class="collapse mt-5">
                 <input type="checkbox" />
                 <div class="collapse-title text-md font-medium">
-                    Komentar
+                    Munculkan Komentar
                 </div>
                 <div class="collapse-content">
-                    <p>tabindex="0" attribute is necessary to make the div focusable</p>
+                    <p>Munculin List Komentar</p>
                 </div>
             </div>
+            <?php if (session()->has('username')) : ?>
+                <form action="<?= route_to('search') ?>" method="GET">
+                    <div class="flex flex-col lg:flex-row gap-3">
+                        <input type="text" name="keyword" placeholder="Masukan nama faskes" class="input input-bordered w-full" />
+                        <select class="select select-secondary w-full max-w-xs">
+                            <option disabled selected>Pilih Rating</option>
+                            <option value="1">Jelek</option>
+                            <option value="2">Kurang Bagus</option>
+                            <option value="3">Biasa Aja</option>
+                            <option value="4">Bagus</option>
+                            <option value="5">Sangat Bagus</option>
+                        </select>
+                        <button type="submit" class="btn btn-accent bg-green-600 btn-md text-white"><span class="material-icons mr-1">
+                                send
+                            </span>Kirim</button>
+                    </div>
+                </form>
+            <?php endif; ?>
         </div>
     </div>
 </section>
