@@ -49,6 +49,10 @@ $routes->group('dashboard', static function ($routes) {
     $routes->group('faskes', static function ($routes) {
         $routes->get('/', 'Faskes::index');
         $routes->get('add', 'Faskes::add', ['as' => 'faskes-add']);
+        $routes->post('create', 'Faskes::create', ['as' => 'faskes-create']);
+        $routes->get('edit/(:segment)', 'Faskes::edit/$1', ['as' => 'faskes-edit']);
+        $routes->post('update/(:segment)', 'Faskes::update/$1', ['as' => 'faskes-update']);
+        $routes->get('delete/(:segment)', 'Faskes::delete/$1', ['as' => 'faskes-delete']);
     });
     $routes->group('jenis', static function ($routes) {
         $routes->get('/', 'Jenis::index', ['as' => 'jenis-index']);

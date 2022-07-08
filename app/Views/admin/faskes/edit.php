@@ -37,13 +37,13 @@
                                 </button> -->
                             </div>
                         </div>
-                        <form action="<?= route_to('faskes-create') ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?= route_to('faskes-update', $faskes['id']) ?>" method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
                                             <label for="nama">Nama Jenis Faskes</label>
-                                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama">
+                                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" value="<?= $faskes['nama'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-2">
@@ -53,7 +53,7 @@
                                                 <?php
                                                 foreach ($jenis_faskes as $jf) {
                                                 ?>
-                                                    <option value="<?= $jf['id'] ?>"><?= $jf['nama'] ?></option>
+                                                    <option <?= $faskes['jenis_faskes_id'] == $jf['id'] ? 'selected' : '' ?> value="<?= $jf['id'] ?>"><?= $jf['nama'] ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -63,7 +63,7 @@
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat">
+                                            <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat" value="<?= $faskes['alamat'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-2">
@@ -73,7 +73,7 @@
                                                 <?php
                                                 foreach ($kecamatan as $k) {
                                                 ?>
-                                                    <option value="<?= $k['id'] ?>"><?= $k['nama'] ?></option>
+                                                    <option <?= $faskes['kecamatan_id'] == $k['id'] ? 'selected' : '' ?> value="<?= $k['id'] ?>"><?= $k['nama'] ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -83,37 +83,37 @@
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
                                             <label>Koordinat</label>
-                                            <input type="text" class="form-control" name="latlong" id="latlong" placeholder="Koordinat">
+                                            <input type="text" class="form-control" name="latlong" id="latlong" placeholder="Koordinat" value="<?= $faskes['latlong'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
                                             <label>Deskripsi</label>
-                                            <input type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi">
+                                            <input type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi" value="<?= $faskes['deskripsi'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
                                             <label>Skor Rating</label>
-                                            <input type="number" step="0.01" class="form-control" name="skor_rating" id="skor_rating" placeholder="Skor Rating">
+                                            <input type="number" step="0.01" class="form-control" name="skor_rating" id="skor_rating" placeholder="Skor Rating" value="<?= $faskes['skor_rating'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
                                             <label>Website</label>
-                                            <input type="text" class="form-control" name="website" id="website" placeholder="Website">
+                                            <input type="text" class="form-control" name="website" id="website" placeholder="Website" value="<?= $faskes['website'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
                                             <label>Jumlah Dokter</label>
-                                            <input type="number" class="form-control" name="jumlah_dokter" id="jumlah_dokter" placeholder="Jumlah Dokter">
+                                            <input type="number" class="form-control" name="jumlah_dokter" id="jumlah_dokter" placeholder="Jumlah Dokter" value="<?= $faskes['jumlah_dokter'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-2">
                                         <div class="form-group">
                                             <label>Jumlah Pegawai</label>
-                                            <input type="number" class="form-control" name="jumlah_pegawai" id="jumlah_pegawai" placeholder="Jumlah Pegawai">
+                                            <input type="number" class="form-control" name="jumlah_pegawai" id="jumlah_pegawai" placeholder="Jumlah Pegawai" value="<?= $faskes['jumlah_pegawai'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-4 mb-2">
