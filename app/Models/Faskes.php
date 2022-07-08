@@ -48,7 +48,7 @@ class Faskes extends Model
 
     public function getFaskesById($id)
     {
-        return $this->select('jenis_faskes.nama as nama_faskes, kecamatan.nama as nama_kecamatan, faskes.*')->join('jenis_faskes', 'faskes.jenis_faskes_id=jenis_faskes.id')->join('kecamatan', 'faskes.kecamatan_id=kecamatan.id')->getWhere(['id' => $id])->get()->getResultArray();
+        return $this->select('jenis_faskes.nama as nama_faskes, kecamatan.nama as nama_kecamatan, faskes.*')->join('jenis_faskes', 'faskes.jenis_faskes_id=jenis_faskes.id')->join('kecamatan', 'faskes.kecamatan_id=kecamatan.id')->getWhere(['faskes.id' => $id])->getResultArray();
     }
 
     public function countAllFaskes()

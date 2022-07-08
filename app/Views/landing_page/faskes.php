@@ -26,7 +26,7 @@
                 } else {
                 ?>
                     <?php foreach ($faskes as $f) : ?>
-                        <a href="<?= base_url('detail-faskes') ?>">
+                        <a href="<?= route_to('detail', $f['id']) ?>">
                             <div class="card w-80 lg:w-64 bg-base-100 shadow-xl">
                                 <figure>
                                     <div class="carousel rounded-box">
