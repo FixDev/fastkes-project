@@ -29,7 +29,13 @@
                       <!-- <span class="float-right text-muted text-sm">12 hours</span> -->
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a href="#" class="dropdown-item text-center">Log out</a>
+                  <?php if (session()->has('username')) : ?>
+                      <form action="<?= route_to('logout') ?>">
+                          <button type="submit" class="dropdown-item btn btn-danger">
+                              Logout
+                          </button>
+                      </form>
+                  <?php endif; ?>
               </div>
           </li>
       </ul>
