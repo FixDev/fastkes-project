@@ -44,7 +44,7 @@ $routes->get('/login', 'Landingpage::login');
 $routes->get('/register', 'Landingpage::register');
 
 // Dashboard
-$routes->group('dashboard', static function ($routes) {
+$routes->group('dashboard', ['filter' => 'authfilter'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');
     $routes->group('faskes', static function ($routes) {
         $routes->get('/', 'Faskes::index');
