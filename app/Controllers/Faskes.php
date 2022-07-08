@@ -48,6 +48,7 @@ class Faskes extends BaseController
             }
         }
         $this->faskes->insert($data);
+        $this->session->setFlashdata('success', "Successfully created.");
 
         return redirect()->to('/dashboard/faskes');
     }
@@ -75,6 +76,7 @@ class Faskes extends BaseController
                 unlink('faskes/' . $real_data[$i]);
             }
         }
+        $this->session->setFlashdata('success', "Successfully updated.");
         $this->faskes->update($id, $data);
 
         return redirect()->to('/dashboard/faskes');
@@ -89,6 +91,7 @@ class Faskes extends BaseController
             }
         }
         $this->faskes->delete($id);
+        $this->session->setFlashdata('success', "Successfully deleted.");
         return redirect()->to('/dashboard/faskes');
     }
 }

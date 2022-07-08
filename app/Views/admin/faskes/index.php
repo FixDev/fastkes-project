@@ -14,6 +14,12 @@
                     </ol>
                 </div>
             </div>
+
+            <?php if (session()->getFlashdata('success')) { ?>
+                <div class="alert alert-success">
+                    <?= session()->getFlashdata('success'); ?>
+                </div>
+            <?php } ?>
         </div>
     </section>
 
@@ -56,7 +62,7 @@
                                         <td><?= $f['alamat'] ?></td>
                                         <td><?= $f['latlong']  ?></td>
                                         <td><?= $f['nama_kecamatan'] ?></td>
-                                        <td><img src="/faskes/<?= $f['foto1']  ?>" alt="<?= $f['foto1']  ?>"></td>
+                                        <td><img src="/faskes/<?= $f['foto1']  ?>" alt="<?= $f['foto1']  ?>" class="w-100"></td>
                                         <td><?= $f['website']  ?></td>
                                         <td><?= $f['skor_rating'] ?></td>
                                         <td><?= $f['jumlah_dokter'] ?></td>
