@@ -2,7 +2,29 @@
 <section class="h-max bg-base-200">
     <div class="p-6">
         <div class="header relative mt-5">
-            <img class="rounded-t-3xl w-full lg:h-96 object-cover" src="/faskes/<?= $faskes[0]['foto1']  ?>" alt="<?= $faskes[0]['foto1']  ?>" />
+            <div class="carousel w-full">
+                <div id="slide1" class="carousel-item relative w-full">
+                  <img class="rounded-t-3xl w-full lg:h-96 object-cover" src="/faskes/<?= $faskes[0]['foto1']  ?>" alt="<?= $faskes[0]['foto1']  ?>" />
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide4" class="btn btn-circle">❮</a>
+                        <a href="#slide2" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide2" class="carousel-item relative w-full">
+                  <img class="rounded-t-3xl w-full lg:h-96 object-cover" src="/faskes/<?= $faskes[0]['foto2']  ?>" alt="<?= $faskes[0]['foto2']  ?>" />
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide1" class="btn btn-circle">❮</a>
+                        <a href="#slide3" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+                <div id="slide3" class="carousel-item relative w-full">
+                  <img class="rounded-t-3xl w-full lg:h-96 object-cover" src="/faskes/<?= $faskes[0]['foto3']  ?>" alt="<?= $faskes[0]['foto3']  ?>" />
+                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide2" class="btn btn-circle">❮</a>
+                        <a href="#slide4" class="btn btn-circle">❯</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="news mt-5 p-1">
             <div class="text-2xl mt-2 font-bold"><?= $faskes[0]['nama']  ?> - <?= $faskes[0]['nama_faskes'] ?> (<a href="<?= $faskes[0]['website']  ?>"><?= $faskes[0]['website']  ?></a>)</div>
@@ -36,25 +58,8 @@
                     } else {
                         foreach ($komentar as $komentar) {
                         ?>
-                            <div class="w-100">
-                                <div class="flex">
-                                    <div class="w-2/3">
-                                        <div class="flex flex-col">
-                                            <div class="flex">
-                                                <div class="w-1/3">
-                                                    <p class="text-sm font-bold"><?= $komentar['username'] ?></p>
-                                                </div>
-                                                <div class="w-2/3">
-                                                    <p class="text-sm"><?= $komentar['tanggal'] ?></p>
-                                                </div>
-                                                <div class="w-3/3">
-                                                    <p class="text-sm"><?= $komentar['isi'] ?></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <p class="text-sm font-bold"><?= $komentar['username'] ?> - <?= $komentar['tanggal'] ?></p>
+                            <p class="text-lg"><?= $komentar['isi'] ?></p>
                     <?php }
                     } ?>
                 </div>
