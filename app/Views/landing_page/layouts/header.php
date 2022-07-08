@@ -27,7 +27,6 @@
                 <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                     <li><a href="<?= base_url() ?>/">Home</a></li>
                     <li><a href="<?= base_url() ?>/daftar-faskes">Faskes</a></li>
-                    <li><a href="<?= base_url() ?>/about">About</a></li>
                 </ul>
             </div>
             <a class="btn btn-ghost normal-case text-xl">FastkesDE</a>
@@ -36,15 +35,26 @@
             <ul class="menu menu-horizontal p-0">
                 <li><a href="<?= base_url() ?>/">Home</a></li>
                 <li><a href="<?= base_url() ?>/daftar-faskes">Faskes</a></li>
-                <li><a  href="<?= base_url() ?>/about">About</a></li>
             </ul>
         </div>
         <div class="navbar-end">
-            <a  href="<?= base_url() ?>/login" class="btn btn-sm btn-outline">
-                Login
-                <span class="material-icons ml-1">
-                    login
-                </span>
-            </a>
+            <?php if (session()->has('username')) : ?>
+                <form action="<?= route_to('logout') ?>">
+                    <button class="btn btn-sm btn-error btn-outline">
+                        Logout
+                        <span class="material-icons ml-1">
+                            logout
+                        </span>
+                    </button>
+                </form>
+            <?php else : ?>
+                <a href="<?= base_url() ?>/login" class="btn btn-sm btn-outline">
+                    Login
+                    <span class="material-icons ml-1">
+                        login
+                    </span>
+                </a>
+            <?php endif; ?>
+
         </div>
     </div>
