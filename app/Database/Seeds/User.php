@@ -33,7 +33,7 @@ class User extends Seeder
 
         foreach ($users as $data) {
             // insert semua data ke tabel
-            $this->db->table('users')->insert($data);
+            $this->db->table('user')->insert($data);
         }
     }
 }
