@@ -40,11 +40,16 @@ $routes->set404Override();
 $routes->get('/', 'Landingpage::home');
 $routes->get('/daftar-faskes', 'Landingpage::faskes');
 $routes->get('/about', 'Landingpage::faskes');
-$routes->get('/login', 'Landingpage::login');
-$routes->get('/register', 'Landingpage::register');
+
+// Auth
+$routes->get('/login', 'Login::login');
+$routes->post('/login', 'Login::Auth', ['as' => 'login']);
+$routes->get('/logout', 'Login::logout', ['as' => 'logout']);
+$routes->get('/register', 'Login::register', ['as' => 'register']);
+$routes->post('/register', 'Login::registered', ['as' => 'register']);
 
 // Dashboard
-$routes->group('dashboard', static function ($routes) {
+$routes->group('dashboard', ['filter' => 'authfilter'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');
     $routes->group('faskes', static function ($routes) {
         $routes->get('/', 'Faskes::index');
