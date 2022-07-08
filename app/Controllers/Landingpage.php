@@ -15,16 +15,19 @@ class Landingpage extends BaseController
 
     public function home()
     {
-        echo view('landing_page/layouts/header');
-        echo view('landing_page/index');
-        echo view('landing_page/layouts/footer');
+        return view('landing_page/index');
     }
     public function faskes()
     {
         $faskes = $this->faskes->getAllFaskes();
 
-        echo view('landing_page/layouts/header');
-        echo view('landing_page/faskes', compact(['faskes']));
-        echo view('landing_page/layouts/footer');
+        return view('landing_page/faskes', compact(['faskes']));
+    }
+
+    public function search()
+    {
+        $keyword = $this->request->getGet('keyword');
+        $faskes = $this->faskes->search($keyword);
+        return view('landing_page/faskes', compact(['faskes', 'keyword']));
     }
 }

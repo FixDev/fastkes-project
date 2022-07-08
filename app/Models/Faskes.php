@@ -50,4 +50,9 @@ class Faskes extends Model
     {
         return $this->countAll();
     }
+
+    public function search($keyword)
+    {
+        return $this->select('jenis_faskes.nama as nama_faskes, kecamatan.nama as nama_kecamatan, faskes.*')->join('jenis_faskes', 'faskes.jenis_faskes_id=jenis_faskes.id')->join('kecamatan', 'faskes.kecamatan_id=kecamatan.id')->like('faskes.nama', $keyword)->get()->getResultArray();
+    }
 }
