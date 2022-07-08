@@ -19,7 +19,15 @@
     <div class="relative flex flex-col justify-center min-h-screen overflow-hidden p-8 lg:p-4">
         <div class="w-full p-6 m-auto bg-white border-t border-accent rounded shadow-lg shadow-accent lg:max-w-md">
             <h1 class="text-3xl font-semibold text-center text-accent">FastkesDE</h1>
-
+            <?php if (session()->getFlashdata('success')) { ?>
+                <div class="alert bg-green-600 text-white mt-2">
+                    <?= session()->getFlashdata('success'); ?>
+                </div>
+            <?php } else if (session()->getFlashdata('error')) { ?>
+                <div class="alert bg-red-600 text-white mt-2">
+                    <?= session()->getFlashdata('error'); ?>
+                </div>
+            <?php } ?>
             <form action="<?= route_to('login') ?>" method="post" class="mt-6">
                 <div>
                     <label for="email" class="block text-sm text-gray-800">Email</label>

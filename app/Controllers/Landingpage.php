@@ -2,26 +2,50 @@
 
 namespace App\Controllers;
 
+use App\Models\Faskes as FaskesModel;
+use App\Models\Komentar as KomentarModel;
+
 class Landingpage extends BaseController
 {
+    protected $faskes;
+    protected $komentar;
+
+    public function __construct()
+    {
+        $this->faskes = new FaskesModel();
+        $this->komentar = new KomentarModel();
+    }
+
     public function home()
     {
-        echo view('landing_page/layouts/header');
-        echo view('landing_page/index');
-        echo view('landing_page/layouts/footer');
+        return view('landing_page/index');
     }
     public function faskes()
     {
-        echo view('landing_page/layouts/header');
-        echo view('landing_page/faskes');
-        echo view('landing_page/layouts/footer');
+        $faskes = $this->faskes->getAllFaskes();
+
+        return view('landing_page/faskes', compact(['faskes']));
     }
-    public function login()
+    public function detail($id)
     {
-        echo view('landing_page/auth/login');
+        $faskes = $this->faskes->getFaskesById($id);
+        $komentar = $this->komentar->join('user', 'komentar.users_id = user.id', 'inner')->join('rating', 'komentar.rating_id = rating.id')->join('faskes', 'komentar.faskes_id = faskes.id')->select('komentar.id, komentar.tanggal, komentar.isi, user.username, rating.nama as rating, faskes.nama as faskes, komentar.rating_id as nilai_rating')->where('komentar.faskes_id', $id)->findAll();
+
+        return view('landing_page/detail_faskes', compact(['faskes', 'komentar']));
     }
-    public function register()
+
+    public function search()
     {
-        echo view('landing_page/auth/register');
+        $keyword = $this->request->getGet('keyword');
+        $faskes = $this->faskes->search($keyword);
+        return view('landing_page/faskes', compact(['faskes', 'keyword']));
+    }
+
+    public function komentar()
+    {
+        $data = $this->request->getPost();
+        $this->komentar->insert($data);
+        $this->session->setFlashdata('success', "Successfully created.");
+        return redirect()->to('/detail-faskes/' . $data['faskes_id']);
     }
 }

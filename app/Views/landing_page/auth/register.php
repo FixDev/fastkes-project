@@ -35,6 +35,7 @@
                             Register
                         </button>
                     </div>
+                </div>
             </form>
 
         </div>

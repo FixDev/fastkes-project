@@ -3,33 +3,39 @@
           <li class="nav-item">
               <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
           </li>
-          <li class="nav-item d-none d-sm-inline-block">
+          <!-- <li class="nav-item d-none d-sm-inline-block">
               <a href="<?= base_url('/dashboard') ?>" class="nav-link">Home</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
               <a href="<?= base_url('/contact') ?>" class="nav-link">Contact</a>
-          </li>
+          </li> -->
       </ul>
 
       <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
               <a class="nav-link" data-toggle="dropdown" href="#">
-                  <span class="pr-2">Sayib Ganteng</span><i class="far fa-user"></i>
+                  <span class="pr-2"><?= session()->username ?></span><i class="far fa-user"></i>
               </a>
               <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                   <!-- <span class="dropdown-item dropdown-header">👋🏻</span> -->
                   <!-- <div class="dropdown-divider"></div> -->
-                  <a href="#" class="dropdown-item">
+                  <!-- <a href="#" class="dropdown-item">
                       <i class="fas fa-user mr-2"></i> Profile
-                      <!-- <span class="float-right text-muted text-sm">3 mins</span> -->
-                  </a>
-                  <div class="dropdown-divider"></div>
+                       <span class="float-right text-muted text-sm">3 mins</span> -->
+                  <!-- </a> -->
+                  <!-- <div class="dropdown-divider"></div>
                   <a href="#" class="dropdown-item">
                       <i class="fas fa-cog mr-2"></i> Setting
                       <!-- <span class="float-right text-muted text-sm">12 hours</span> -->
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a href="#" class="dropdown-item text-center">Log out</a>
+                  <?php if (session()->has('username')) : ?>
+                      <form action="<?= route_to('logout') ?>">
+                          <button type="submit" class="dropdown-item btn btn-danger">
+                              Logout
+                          </button>
+                      </form>
+                  <?php endif; ?>
               </div>
           </li>
       </ul>
