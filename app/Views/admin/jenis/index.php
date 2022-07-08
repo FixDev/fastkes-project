@@ -38,29 +38,31 @@
                     </div>
 
                     <div class="card-body table-responsive p-0">
-                        <table class="table table-hover text-nowrap text-center">
-                            <thead>
-                                <th>No</th>
-                                <th>Nama Jenis Faskes</th>
-                                <th>Aksi</th>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $no = 1;
-                                foreach ($jenis as $j) :
-                                ?>
-                                    <tr>
-                                        <td><?= $no++; ?></td>
-                                        <td><?= $j['nama']  ?></td>
-                                        <td>
-                                            <a class="btn btn-sm btn-info" href="<?= base_url('dashboard/jenis/' . $j['id'] . '/edit') ?>"><i class="fa fa-edit"></i></a>
-                                            <a class="btn btn-sm btn-danger" href="#" data-href="<?= base_url('dashboard/jenis/' . $j['id'] . '/delete') ?>" onclick="confirmToDelete(this)"><i class="fa fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
+                        <div class="container-fluid p-2">
+                            <table class="table table-hover text-nowrap text-center" id="table-data-jenis">
+                                <thead>
+                                    <th>No</th>
+                                    <th>Nama Jenis Faskes</th>
+                                    <th>Aksi</th>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $no = 1;
+                                    foreach ($jenis as $j) :
+                                    ?>
+                                        <tr>
+                                            <td><?= $no++; ?></td>
+                                            <td><?= $j['nama']  ?></td>
+                                            <td>
+                                                <a class="btn btn-sm btn-info" href="<?= base_url('dashboard/jenis/' . $j['id'] . '/edit') ?>"><i class="fa fa-edit"></i></a>
+                                                <a class="btn btn-sm btn-danger" href="#" data-href="<?= base_url('dashboard/jenis/' . $j['id'] . '/delete') ?>" onclick="confirmToDelete(this)"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
 
                         <!-- Modal -->
                         <div class="modal fade" id="confirm-dialog" tabindex="-1" role="dialog" aria-labelledby="confirm-dialog" aria-hidden="true">

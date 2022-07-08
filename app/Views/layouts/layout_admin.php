@@ -45,7 +45,18 @@
     <script src="<?= base_url('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>
     <script>
         $(function() {
+
+            // Table Index - Faskes
             $("#table-data").DataTable();
+
+            // Table Index - Jenis Faskes
+            $("#table-data-jenis").DataTable({
+                'columnDefs': [{
+                    'targets': [0, 2], //disable sort di tombol action
+                    'orderable': false,
+                }]
+            });
+
         });
     </script>
 </body>
