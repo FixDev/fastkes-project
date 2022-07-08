@@ -26,14 +26,47 @@
                     Munculkan Komentar
                 </div>
                 <div class="collapse-content">
-                    <p>Munculin List Komentar</p>
+                    <?php
+                    if (count($komentar) == 0) {
+                    ?>
+                        <div class="text-center">
+                            <p class="text-xl">Belum ada komentar</p>
+                        </div>
+                        <?php
+                    } else {
+                        foreach ($komentar as $komentar) {
+                        ?>
+                            <div class="w-100">
+                                <div class="flex">
+                                    <div class="w-2/3">
+                                        <div class="flex flex-col">
+                                            <div class="flex">
+                                                <div class="w-1/3">
+                                                    <p class="text-sm font-bold"><?= $komentar['username'] ?></p>
+                                                </div>
+                                                <div class="w-2/3">
+                                                    <p class="text-sm"><?= $komentar['tanggal'] ?></p>
+                                                </div>
+                                                <div class="w-3/3">
+                                                    <p class="text-sm"><?= $komentar['isi'] ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php }
+                    } ?>
                 </div>
             </div>
-            <?php if (session()->has('username')) : ?>
-                <form action="<?= route_to('search') ?>" method="GET">
+            <?php if (session()->islogin) : ?>
+                <form action="<?= route_to('komentar') ?>" method="POST">
                     <div class="flex flex-col lg:flex-row gap-3">
-                        <input type="text" name="keyword" placeholder="Masukan nama faskes" class="input input-bordered w-full" />
-                        <select class="select select-secondary w-full max-w-xs">
+                        <input type="hidden" name="faskes_id" value="<?= (int)$faskes[0]['id'] ?>">
+                        <input type="hidden" name="users_id" value="<?= (int)session()->id ?>">
+                        <input type="hidden" name="tanggal" value="<?= date('Y-m-d') ?>">
+                        <input type="text" name="isi" placeholder="Masukan Komentar Anda" class="input input-bordered w-full" required />
+                        <select class="select select-secondary w-full max-w-xs" name="rating_id" required>
                             <option disabled selected>Pilih Rating</option>
                             <option value="1">Jelek</option>
                             <option value="2">Kurang Bagus</option>
