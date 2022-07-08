@@ -6,6 +6,7 @@ use App\Models\Faskes as FaskesModel;
 use App\Models\Jenis as JenisModel;
 use App\Models\Rating as RatingModel;
 use App\Models\Komentar as KomentarModel;
+use App\Models\User as UserModel;
 
 class Dashboard extends BaseController
 {
@@ -13,6 +14,7 @@ class Dashboard extends BaseController
     protected $jenis;
     protected $rating;
     protected $komentar;
+    protected $user;
 
     public function __construct()
     {
@@ -20,6 +22,7 @@ class Dashboard extends BaseController
         $this->jenis = new JenisModel();
         $this->rating = new RatingModel();
         $this->komentar = new KomentarModel();
+        $this->user = new UserModel();
     }
 
     public function index()
@@ -35,12 +38,13 @@ class Dashboard extends BaseController
         JOIN rating r on r.id = k.rating_id
         GROUP BY r.id) src_tambah
         ")->getFirstRow();
-        
+
         $data = [
             'totalFaskes'   => $this->faskes->countAllFaskes(),
             'totalJenis'    => $this->jenis->countAllJenis(),
             'avgRating'     => number_format((float)round($res->avg), 2, '.', ''),
             'totalKomentar' => $this->komentar->countAllKomentar(),
+            'totalUser'     => $this->user->countAllUser(),
             'title'         => 'Dashboard',
         ];
 

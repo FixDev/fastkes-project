@@ -14,6 +14,15 @@
           </ol>
         </div>
       </div>
+      <?php if (session()->getFlashdata('success')) { ?>
+        <div class="alert alert-success">
+          <?= session()->getFlashdata('success'); ?>
+        </div>
+      <?php } else if (session()->getFlashdata('error')) { ?>
+        <div class="alert alert-danger">
+          <?= session()->getFlashdata('error'); ?>
+        </div>
+      <?php } ?>
     </div>
   </section>
 
@@ -23,7 +32,9 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Data <?= $title ?></h3>
-
+            <div class="card-tools">
+              <a class="btn btn-sm btn-success" href="<?= base_url('dashboard/user/new') ?>"><i class="fa fa-plus"></i> Tambah Data</a>
+            </div>
           </div>
 
           <div class="card-body table-responsive p-0">

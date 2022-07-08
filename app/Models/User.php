@@ -39,4 +39,9 @@ class User extends Model
   protected $afterFind      = [];
   protected $beforeDelete   = [];
   protected $afterDelete    = [];
+
+  public function countAllUser()
+  {
+    return $this->countAll();
+  }
 }
