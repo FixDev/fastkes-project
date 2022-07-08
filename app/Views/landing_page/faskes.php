@@ -26,32 +26,35 @@
                 } else {
                 ?>
                     <?php foreach ($faskes as $f) : ?>
-                        <div class="card w-80 lg:w-64 bg-base-100 shadow-xl">
-                            <figure>
-                                <div class="carousel rounded-box">
-                                    <div class="carousel-item w-full">
-                                        <img src="/faskes/<?= $f['foto1']  ?>" alt="<?= $f['foto1']  ?>" class="w-full" />
+                        <a href="<?= base_url('detail-faskes') ?>">
+                            <div class="card w-80 lg:w-64 bg-base-100 shadow-xl">
+                                <figure>
+                                    <div class="carousel rounded-box">
+                                        <div class="carousel-item w-full">
+                                            <img src="/faskes/<?= $f['foto1']  ?>" alt="<?= $f['foto1']  ?>" class="w-full" />
+                                        </div>
                                     </div>
-                                </div>
-                            </figure>
-                            <div class="card-body">
-                                <h2 class="card-title">
-                                    <?= $f['nama']  ?> - <?= $f['nama_faskes'] ?>
+                                </figure>
+                                <div class="card-body">
+                                    <h2 class="card-title">
+                                        <?= $f['nama']  ?> - <?= $f['nama_faskes'] ?>
 
-                                </h2>
-                                <p><?= $f['alamat'] ?></p>
-                                <div class="card-actions justify-end">
-                                    <div class="rating">
-                                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked /> &nbsp;
-                                        <?= $f['skor_rating'] ?>
-                                        <!-- <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" /> -->
-                                        <!-- <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                                    </h2>
+                                    <p><?= $f['alamat'] ?></p>
+                                    <div class="card-actions justify-end">
+                                        <div class="rating">
+                                            <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked /> &nbsp;
+                                            <?= $f['skor_rating'] ?>
+                                            <!-- <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" /> -->
+                                            <!-- <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
                                     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
                                     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" /> -->
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
-                        </div>
+                        </a>
                     <?php endforeach; ?>
                 <?php } ?>
             </div>

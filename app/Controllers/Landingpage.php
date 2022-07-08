@@ -23,6 +23,12 @@ class Landingpage extends BaseController
 
         return view('landing_page/faskes', compact(['faskes']));
     }
+    public function detail()
+    {
+        $faskes = $this->faskes->getAllFaskes();
+
+        return view('landing_page/detail_faskes', compact(['faskes']));
+    }
 
     public function search()
     {
