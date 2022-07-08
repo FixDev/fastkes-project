@@ -49,7 +49,7 @@ $routes->get('/register', 'Login::register', ['as' => 'register']);
 $routes->post('/register', 'Login::registered', ['as' => 'register']);
 
 // Dashboard
-$routes->group('dashboard', ['filter' => 'authfilter'], static function ($routes) {
+$routes->group('dashboard', ['filter' => 'authfilter', 'filter' => 'rolefilter'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');
     $routes->group('faskes', static function ($routes) {
         $routes->get('/', 'Faskes::index');
