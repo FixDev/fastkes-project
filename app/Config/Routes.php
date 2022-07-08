@@ -46,25 +46,37 @@ $routes->get('/register', 'Landingpage::register');
 // Dashboard
 $routes->group('dashboard', static function ($routes) {
     $routes->get('/', 'Dashboard::index');
+    // faskes
     $routes->group('faskes', static function ($routes) {
         $routes->get('/', 'Faskes::index');
         $routes->get('add', 'Faskes::add', ['as' => 'faskes-add']);
     });
+    // jenis faskes
     $routes->group('jenis', static function ($routes) {
         $routes->get('/', 'Jenis::index', ['as' => 'jenis-index']);
         $routes->add('add', 'Jenis::add', ['as' => 'jenis-create']);
         $routes->add('(:segment)/edit', 'Jenis::edit/$1', ['as' => 'jenis-edit']);
         $routes->get('(:segment)/delete', 'Jenis::delete/$1', ['as' => 'jenis-delete']);
     });
+    // kecamatan
     $routes->group('kecamatan', static function ($routes) {
         $routes->get('/', 'Kecamatan::index');
         $routes->add('new', 'Kecamatan::create');
         $routes->add('(:segment)/edit', 'Kecamatan::edit/$1');
         $routes->get('(:segment)/delete', 'Kecamatan::delete/$1');
     });
+    // komentar
     $routes->group('komentar', static function ($routes) {
         $routes->get('/', 'Komentar::index');
         $routes->get('(:segment)/delete', 'Kecamatan::delete/$1');
+    });
+    // user
+    $routes->group('user', static function ($routes) {
+        $routes->get('/', 'User::index');
+        $routes->get('(:segment)/preview', 'User::preview/$1');
+        $routes->add('new', 'User::create');
+        $routes->add('(:segment)/edit', 'User::edit/$1');
+        $routes->get('(:segment)/delete', 'User::delete/$1');
     });
 });
 /*
