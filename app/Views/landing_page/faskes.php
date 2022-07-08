@@ -1,3 +1,4 @@
+<?= $this->include('landing_page/layouts/header') ?>
 <section class="h-screen bg-base-200">
     <div class="p-6">
         <div class="bg-white p-6 rounded-lg">
@@ -5,172 +6,56 @@
                 <h1 class="font-medium text-xl">Ayoo, Temukan Faskes Terdekat.</h1>
             </header>
 
-            <div class="flex flex-col lg:flex-row gap-3">
-                <input type="text" placeholder="Masukan nama faskes" class="input input-bordered w-full" />
-                <button class="btn btn-accent btn-md text-white"><span class="material-icons mr-1">
-                        search
-                    </span>Search</button>
-            </div>
+            <form action="<?= route_to('search') ?>" method="GET">
+                <div class="flex flex-col lg:flex-row gap-3">
+                    <input type="text" name="keyword" placeholder="Masukan nama faskes" class="input input-bordered w-full" />
+                    <button type="submit" class="btn btn-accent bg-green-600 btn-md text-white"><span class="material-icons mr-1">
+                            search
+                        </span>Search</button>
+                </div>
+            </form>
 
             <div class="flex flex-wrap flex-row justify-center gap-8 mt-5 mb-5">
-                <?php foreach ($faskes as $f) : ?>
-                    <div class="card w-80 lg:w-64 bg-base-100 shadow-xl">
-                        <figure>
-                            <div class="carousel rounded-box">
-                                <div class="carousel-item w-full">
-                                    <img src="/faskes/<?= $f['foto1']  ?>" alt="<?= $f['foto1']  ?>" class="w-full" />
+                <?php
+                if (count($faskes) == 0) {
+                ?>
+                    <div class="text-center">
+                        <h2 class="text-xl">Tidak ditemukan faskes dengan nama <?= $keyword ?>.</h2>
+                    </div>
+                <?php
+                } else {
+                ?>
+                    <?php foreach ($faskes as $f) : ?>
+                        <div class="card w-80 lg:w-64 bg-base-100 shadow-xl">
+                            <figure>
+                                <div class="carousel rounded-box">
+                                    <div class="carousel-item w-full">
+                                        <img src="/faskes/<?= $f['foto1']  ?>" alt="<?= $f['foto1']  ?>" class="w-full" />
+                                    </div>
                                 </div>
-                            </div>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="card-title">
-                                <?= $f['nama']  ?> - <?= $f['nama_faskes'] ?>
+                            </figure>
+                            <div class="card-body">
+                                <h2 class="card-title">
+                                    <?= $f['nama']  ?> - <?= $f['nama_faskes'] ?>
 
-                            </h2>
-                            <p><?= $f['alamat'] ?></p>
-                            <div class="card-actions justify-end">
-                                <div class="rating">
-                                    <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked /> &nbsp;
-                                    <?= $f['skor_rating'] ?>
-                                    <!-- <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" /> -->
-                                    <!-- <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                                </h2>
+                                <p><?= $f['alamat'] ?></p>
+                                <div class="card-actions justify-end">
+                                    <div class="rating">
+                                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked /> &nbsp;
+                                        <?= $f['skor_rating'] ?>
+                                        <!-- <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" /> -->
+                                        <!-- <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
                                     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
                                     <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" /> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-                <!-- <div class="card w-80 lg:w-64 bg-base-100 shadow-xl">
-                    <figure>
-                        <div class="carousel rounded-box">
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=8B7BCDC2" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=500B67FB" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=A89D0DE6" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=225E6693" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=9D9539E7" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=BDC01094" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=7F5AE56A" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                        </div>
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            Shoes!
-                            <div class="badge badge-secondary">NEW</div>
-                        </h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div class="card-actions justify-end">
-                            <div class="rating">
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card w-80 lg:w-64 bg-base-100 shadow-xl">
-                    <figure>
-                        <div class="carousel rounded-box">
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=8B7BCDC2" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=500B67FB" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=A89D0DE6" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=225E6693" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=9D9539E7" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=BDC01094" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=7F5AE56A" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                        </div>
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            Shoes!
-                            <div class="badge badge-secondary">NEW</div>
-                        </h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div class="card-actions justify-end">
-                            <div class="rating">
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card w-80 lg:w-64 bg-base-100 shadow-xl">
-                    <figure>
-                        <div class="carousel rounded-box">
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=8B7BCDC2" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=500B67FB" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=A89D0DE6" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=225E6693" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=9D9539E7" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=BDC01094" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                            <div class="carousel-item w-full">
-                                <img src="https://api.lorem.space/image/game?w=400&h=300&hash=7F5AE56A" class="w-full" alt="Tailwind CSS Carousel component" />
-                            </div>
-                        </div>
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            Shoes!
-                            <div class="badge badge-secondary">NEW</div>
-                        </h2>
-                        <p>If a dog chews shoes whose shoes does he choose?</p>
-                        <div class="card-actions justify-end">
-                            <div class="rating">
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                    <?php endforeach; ?>
+                <?php } ?>
             </div>
         </div>
     </div>
 </section>
+<?= $this->include('landing_page/layouts/footer') ?>

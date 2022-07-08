@@ -1,3 +1,4 @@
+<?= $this->include('landing_page/layouts/header') ?>
 <section class="bg-base-200">
     <div class="h-screen bg-white p-5 lg:mt-5 lg:mb-5 rounded-lg">
         <div class="flex flex-wrap justify-around">
@@ -17,3 +18,4 @@
         </div>
     </div>
 </section>
+<?= $this->include('landing_page/layouts/footer') ?>
