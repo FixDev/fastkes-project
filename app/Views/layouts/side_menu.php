@@ -75,6 +75,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?= base_url('/') ?>" class="nav-link" target="_blank">
+                        <i class="nav-icon fas fa-external-link-alt"></i>
+                        <p>
+                            Landing Page
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
