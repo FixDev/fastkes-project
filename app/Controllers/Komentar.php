@@ -27,4 +27,11 @@ class Komentar extends BaseController
     $komens = $this->komentar->join('user', 'komentar.users_id = user.id', 'inner')->join('rating', 'komentar.rating_id = rating.id')->join('faskes', 'komentar.faskes_id = faskes.id')->select('komentar.id, komentar.tanggal, komentar.isi, user.username, rating.nama as rating, faskes.nama as faskes, komentar.rating_id as nilai_rating')->find();
     return view('admin/komentar/index', compact(['title', 'komens']));
   }
+
+  public function delete($id)
+  {
+    $komen = new KomentarModel();
+    $komen->delete($id);
+    return redirect('dashboard/komentar');
+  }
 }
