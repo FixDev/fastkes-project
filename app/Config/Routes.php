@@ -40,12 +40,18 @@ $routes->set404Override();
 $routes->get('/', 'Landingpage::home');
 $routes->get('/daftar-faskes', 'Landingpage::faskes');
 $routes->get('/about', 'Landingpage::faskes');
-$routes->get('/login', 'Landingpage::login');
-$routes->get('/register', 'Landingpage::register');
+
+// Auth
+$routes->get('/login', 'Login::login');
+$routes->post('/login', 'Login::Auth', ['as' => 'login']);
+$routes->get('/logout', 'Login::logout', ['as' => 'logout']);
+$routes->get('/register', 'Login::register', ['as' => 'register']);
+$routes->post('/register', 'Login::registered', ['as' => 'register']);
 
 // Dashboard
-$routes->group('dashboard', static function ($routes) {
+$routes->group('dashboard', ['filter' => 'authfilter', 'filter' => 'rolefilter'], static function ($routes) {
     $routes->get('/', 'Dashboard::index');
+    // faskes
     $routes->group('faskes', static function ($routes) {
         $routes->get('/', 'Faskes::index');
         $routes->get('add', 'Faskes::add', ['as' => 'faskes-add']);
@@ -54,21 +60,32 @@ $routes->group('dashboard', static function ($routes) {
         $routes->post('update/(:segment)', 'Faskes::update/$1', ['as' => 'faskes-update']);
         $routes->get('delete/(:segment)', 'Faskes::delete/$1', ['as' => 'faskes-delete']);
     });
+    // jenis faskes
     $routes->group('jenis', static function ($routes) {
         $routes->get('/', 'Jenis::index', ['as' => 'jenis-index']);
         $routes->add('add', 'Jenis::add', ['as' => 'jenis-create']);
         $routes->add('(:segment)/edit', 'Jenis::edit/$1', ['as' => 'jenis-edit']);
         $routes->get('(:segment)/delete', 'Jenis::delete/$1', ['as' => 'jenis-delete']);
     });
+    // kecamatan
     $routes->group('kecamatan', static function ($routes) {
         $routes->get('/', 'Kecamatan::index');
         $routes->add('new', 'Kecamatan::create');
         $routes->add('(:segment)/edit', 'Kecamatan::edit/$1');
         $routes->get('(:segment)/delete', 'Kecamatan::delete/$1');
     });
+    // komentar
     $routes->group('komentar', static function ($routes) {
         $routes->get('/', 'Komentar::index');
         $routes->get('(:segment)/delete', 'Kecamatan::delete/$1');
+    });
+    // user
+    $routes->group('user', static function ($routes) {
+        $routes->get('/', 'User::index');
+        $routes->get('(:segment)/preview', 'User::preview/$1');
+        $routes->add('new', 'User::create');
+        $routes->add('(:segment)/edit', 'User::edit/$1');
+        $routes->get('(:segment)/delete', 'User::delete/$1');
     });
 });
 /*

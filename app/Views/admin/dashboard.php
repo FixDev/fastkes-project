@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('dashboard') ?>">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </div>
@@ -29,7 +29,7 @@
                     <div class="icon">
                         <i class="fas fa-hospital"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="<?= base_url('dashboard/faskes') ?>" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
@@ -45,23 +45,7 @@
                     <div class="icon">
                         <i class="fas fa-list"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
-                        More info <i class="fas fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3><?= $avgRating ?? "0"; ?></h3>
-                        <p>Avg. Rating</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="<?= base_url('dashboard/jenis') ?>" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
@@ -77,12 +61,43 @@
                     <div class="icon">
                         <i class="fas fa-comment"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="<?= base_url('dashboard/komentar') ?>" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
 
+            <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3><?= $totalUser ?? "0"; ?></h3>
+                        <p>Total User</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <a href="<?= base_url('dashboard/user') ?>" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3><?= $avgRating ?? "0"; ?></h3>
+                        <p>Avg. Rating</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <!-- <a href="#" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a> -->
+                </div>
+            </div>
         </div>
     </section>
 </div>
