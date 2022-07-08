@@ -12,7 +12,7 @@ class User extends Seeder
             [
                 'username' => 'admin',
                 'id' => 1,
-                'password' => '827ccb0eea8a706c4c34a16891f84e7b',
+                'password' => md5('admin'),
                 'email' => 'admin@gmail.com',
                 'created_at' => '2022-06-12 00:32:05',
                 'last_login' => '2022-06-12 00:32:05',
@@ -22,7 +22,7 @@ class User extends Seeder
             [
                 'username' => 'aminah',
                 'id' => 2,
-                'password' => '90b74c589f46e8f3a484082d659308bd',
+                'password' => md5('aminah'),
                 'email' => 'aminahcantik@gmail.com',
                 'created_at' => '2022-06-12 00:32:05',
                 'last_login' => '2022-06-12 00:32:05',
@@ -33,7 +33,7 @@ class User extends Seeder
 
         foreach ($users as $data) {
             // insert semua data ke tabel
-            $this->db->table('user')->insert($data);
+            $this->db->table('users')->insert($data);
         }
     }
 }
